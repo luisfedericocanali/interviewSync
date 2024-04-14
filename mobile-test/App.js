@@ -1,17 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
-
+import AppStackNavigator from "./src/router";
+import {QueryClient, QueryClientProvider,} from "@tanstack/react-query";
+const queryClient = new QueryClient()
 export default function App() {
   return (
-      <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>
+      <NavigationContainer>
+        <QueryClientProvider client={queryClient}>
+          <AppStackNavigator />
+        </QueryClientProvider>
+      </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
